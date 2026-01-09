@@ -45,6 +45,8 @@ AZURE_OPENAI_DEPLOYMENT_NAME=your-deployment-name
 AZURE_OPENAI_API_VERSION=2023-12-01-preview
 ```
 
+**Note:** The PostgreSQL credentials are already set to use the read-only user (`readonly_user`) created by the initialization script. You don't need to change these unless you modify the database setup.
+
 ### 3. Start PostgreSQL Database
 
 ```bash

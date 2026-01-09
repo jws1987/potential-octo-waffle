@@ -3,9 +3,12 @@ services:
     image: postgres:16-alpine
     container_name: databricks_metadata_db
     environment:
+      # Admin user credentials (for Docker container setup)
       POSTGRES_DB: databricks_metadata
       POSTGRES_USER: dbuser
       POSTGRES_PASSWORD: dbpassword
+      # Note: init.sql creates a read-only user (readonly_user/readonly_pass) 
+      # which the application uses for secure, read-only access
     ports:
       - "5432:5432"
     volumes:
