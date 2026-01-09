@@ -1,7 +1,7 @@
 """LangChain-based chat agent for Databricks metadata queries."""
 
 from langchain_openai import AzureChatOpenAI
-from langchain.agents import create_sql_agent
+from langchain_community.agent_toolkits.sql.base import create_sql_agent
 from langchain_community.agent_toolkits import SQLDatabaseToolkit
 from langchain_community.utilities import SQLDatabase
 from langchain.agents.agent_types import AgentType

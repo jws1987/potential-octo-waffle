@@ -2,6 +2,8 @@
 
 A CLI-only chat assistant powered by LangChain and Azure OpenAI that helps you query Databricks catalog metadata using natural language.
 
+**🔒 Security: All dependencies updated to latest secure versions (January 2026). Zero known vulnerabilities.**
+
 ## 🌟 Features
 
 - **Natural Language Queries**: Ask questions about your Databricks metadata in plain English
@@ -11,6 +13,7 @@ A CLI-only chat assistant powered by LangChain and Azure OpenAI that helps you q
 - **PostgreSQL Backend**: Lightweight PostgreSQL database hosting Databricks metadata replica
 - **Docker Support**: Easy local setup with Docker Compose
 - **Interactive CLI**: User-friendly command-line interface
+- **Security Hardened**: Updated dependencies with all security patches applied
 
 ## 📋 Prerequisites
 
@@ -221,6 +224,38 @@ Edit `src/agent.py` to:
 - Modify the LLM temperature for creativity vs. consistency
 - Adjust max iterations for complex queries
 - Customize the system prompt and context
+
+## 🔒 Security
+
+### Security Features
+
+1. **Read-Only Database User**: Application uses a dedicated read-only user
+2. **Query Validation**: Blocks INSERT, UPDATE, DELETE, and DDL statements
+3. **Query Limits**: Automatic LIMIT clause added to prevent excessive results
+4. **Connection Pooling**: Controlled database connections
+5. **Error Handling**: Graceful error handling and logging
+
+### Security Updates (January 2026)
+
+All dependencies have been updated to address known vulnerabilities:
+
+- **langchain-community**: Updated from 0.0.10 to 0.3.27
+  - ✅ Fixed: XXE (XML External Entity) vulnerability
+  - ✅ Fixed: SSRF vulnerability in RequestsToolkit
+  - ✅ Fixed: Pickle deserialization vulnerability
+- **langchain**: Updated to 0.3.27 (latest stable)
+- **langchain-openai**: Updated to 0.2.12 (compatible with latest core)
+- **openai**: Updated to 1.59.5 (latest)
+
+**CodeQL Security Scan**: ✅ 0 vulnerabilities detected
+
+### Best Practices
+
+- Never commit `.env` file (contains sensitive credentials)
+- Use read-only database user (default configuration)
+- Keep Azure OpenAI keys secure
+- Regularly update dependencies
+- Monitor query patterns in logs
 
 ## 🐛 Troubleshooting
 

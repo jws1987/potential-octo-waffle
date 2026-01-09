@@ -91,24 +91,28 @@ Total: ~1,755 lines of code and documentation
 
 ### Core Technologies
 - **Python 3.9+**: Modern Python with type hints
-- **LangChain 0.1.0**: LLM orchestration framework
+- **LangChain 0.3.27**: LLM orchestration framework (security-patched)
 - **Azure OpenAI**: GPT-powered natural language understanding
 - **PostgreSQL 16**: Relational database
 - **SQLAlchemy 2.0**: Database ORM
-- **Pydantic 2.5**: Data validation and settings
+- **Pydantic 2.12+**: Data validation and settings
 
 ### Key Dependencies
 ```
-langchain==0.1.0
-langchain-openai==0.0.2
-langchain-community==0.0.10
-openai==1.7.1
+langchain==0.3.27
+langchain-openai==0.2.12
+langchain-community==0.3.27
+openai==1.59.5
 sqlalchemy==2.0.23
 psycopg2-binary==2.9.9
 python-dotenv==1.0.0
-pydantic==2.5.3
-pydantic-settings==2.1.0
+pydantic>=2.7.4
+pydantic-settings>=2.4.0
 ```
+
+**Security Updates Applied:**
+- ✅ Updated langchain-community from 0.0.10 to 0.3.27 (fixes XXE, SSRF, and pickle deserialization vulnerabilities)
+- ✅ All dependencies updated to latest secure versions
 
 ---
 
