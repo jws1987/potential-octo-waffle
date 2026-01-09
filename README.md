@@ -121,9 +121,11 @@ In the main catalog, there are 5 tables:
 ### Components
 
 1. **CLI Interface** (`src/cli.py`): Interactive command-line interface
-2. **LangChain Agent** (`src/agent.py`): Natural language to SQL conversion
+2. **LangChain Agent** (`src/agent.py`): Natural language to SQL conversion with dynamic schema discovery
 3. **Database Manager** (`src/database.py`): Safe query execution and connection management
 4. **Configuration** (`src/config.py`): Settings and environment variable management
+
+**Note on Schema Discovery**: The LangChain SQL Agent uses the SQLDatabaseToolkit which provides tools for dynamic schema discovery (`sql_db_list_tables`, `sql_db_schema`). The agent discovers table structures on-demand rather than using hardcoded schema information, making it more flexible and scalable.
 
 ### Data Flow
 
@@ -133,8 +135,9 @@ User Question
 CLI Interface
     ↓
 LangChain SQL Agent (Azure OpenAI)
-    ↓
-SQL Query Generation
+  • Discovers available tables (sql_db_list_tables)
+  • Retrieves schema for needed tables (sql_db_schema)
+  • Generates SQL query
     ↓
 Database Manager (Safety Checks)
     ↓

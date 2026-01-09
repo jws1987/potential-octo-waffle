@@ -27,6 +27,7 @@ All requirements from the problem statement have been successfully implemented a
 
 ### 3. LangChain SQL Agent ✅
 - Zero-shot React agent for query planning
+- Dynamic schema discovery using SQLDatabaseToolkit (sql_db_list_tables, sql_db_schema)
 - Automatic SQL query generation
 - Query validation and safety checks
 - Intermediate step tracking for debugging

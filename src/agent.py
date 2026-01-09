@@ -111,23 +111,11 @@ class DatabricksMetadataAgent:
         """Build context string for the agent."""
         context = """You are an expert SQL assistant helping users query Databricks metadata.
 
-The database contains the following tables that mirror Databricks information_schema:
-
-1. **catalogs**: Contains catalog information
-   - catalog_name, catalog_owner, comment, created_at
-
-2. **schemas**: Contains schema information  
-   - catalog_name, schema_name, schema_owner, comment, created_at
-
-3. **tables**: Contains table information
-   - table_catalog, table_schema, table_name, table_type, table_owner, comment, created_at
-
-4. **columns**: Contains column information
-   - table_catalog, table_schema, table_name, column_name, ordinal_position, 
-     data_type, is_nullable, column_default, comment
+The database mirrors Databricks information_schema with tables for catalogs, schemas, tables, and columns.
 
 Important guidelines:
 - Only generate SELECT queries (read-only)
+- Use the sql_db_list_tables and sql_db_schema tools to discover available tables and their structure
 - Use proper JOIN conditions when querying across tables
 - Filter results appropriately to answer the specific question
 - Provide clear, concise answers based on the query results
